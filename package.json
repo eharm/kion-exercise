@@ -1,0 +1,29 @@
+{
+   "name": "kion-exercise",
+   "version": "1.0.0",
+   "description": "This will contain all of the test given for the automation testing assessment",
+   "main": "index.js",
+   "scripts": {
+      "test": "npx cypress open",
+      "e2e": "npx cypress run",
+      "lint": "npx eslint cypress/**"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/eharm/kion-exercise.git"
+   },
+   "author": "Evan Harmony",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/eharm/kion-exercise/issues"
+   },
+   "homepage": "https://github.com/eharm/kion-exercise#readme",
+   "dependencies": {
+      "cypress": "^12.4.0",
+      "typescript": "^4.9.4"
+   },
+   "devDependencies": {
+      "eslint": "^8.32.0",
+      "eslint-plugin-cypress": "^2.12.1"
+   }
+}

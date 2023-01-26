@@ -1,0 +1,20 @@
+/* Visit https://aka.ms/tsconfig to read more about this file */
+{
+   "compileOnSave": false,
+   "compilerOptions": {
+      "strictNullChecks": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "noImplicitReturns": true,
+      "noImplicitAny": true,
+      "noFallthroughCasesInSwitch": true,
+      "importHelpers": true,
+      "target": "ES5",
+      "module": "ES2022",
+      "lib": ["ES5", "DOM"],
+      "types": ["cypress", "node"]
+   },
+   "include": ["**/*.ts"]
+}
