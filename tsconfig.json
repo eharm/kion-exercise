@@ -10,7 +10,6 @@
       "noImplicitReturns": true,
       "noImplicitAny": true,
       "noFallthroughCasesInSwitch": true,
-      "importHelpers": true,
       "target": "ES5",
       "module": "ES2022",
       "lib": ["ES5", "DOM"],

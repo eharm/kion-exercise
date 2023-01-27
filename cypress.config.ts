@@ -1,4 +1,4 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from 'cypress';
 
 export default defineConfig({
    viewportHeight: 1080,
@@ -8,7 +8,7 @@ export default defineConfig({
       setupNodeEvents(on, config) {
          // implement node event listeners here
       },
-      baseUrl: "https://www.expedia.com",
-      specPattern: "**/*.cy.ts",
+      baseUrl: 'https://www.expedia.com',
+      specPattern: '**/*.cy.ts',
    },
 });

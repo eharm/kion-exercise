@@ -1,0 +1,8 @@
+{
+   "env": {
+      "browser": true
+   },
+   "extends": ["eslint:recommended", "plugin:cypress/recommended"],
+   "parser": "@typescript-eslint/parser",
+   "plugins": ["@typescript-eslint", "cypress"]
+}
