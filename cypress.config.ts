@@ -11,4 +11,7 @@ export default defineConfig({
       baseUrl: 'https://www.expedia.com',
       specPattern: '**/*.cy.ts',
    },
+   env: {
+      hideXHR: true
+   }
 });

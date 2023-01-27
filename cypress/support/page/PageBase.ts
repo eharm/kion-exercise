@@ -1,6 +1,6 @@
 import { IPage } from './IPage';
 
-export class PageBase implements IPage {
+export abstract class PageBase implements IPage {
    public pageUrl = '';
 
    private _checkUrlSet(): void {
@@ -16,10 +16,10 @@ export class PageBase implements IPage {
    public checkUrl(): void {
       this._checkUrlSet();
       const urlRegex = new RegExp(
-         '^'                                          // anchor from start of string
-         + Cypress.config().baseUrl                   // start with domain
-         + this.pageUrl                               // concatenate the current page
-         , 'i'                                        // case-insensitive search
+         '^'                             // anchor from start of string
+         + Cypress.config().baseUrl      // start with domain
+         + this.pageUrl                  // concatenate the current page
+         , 'i'                           // case-insensitive search
       );
       cy.url().should('match', urlRegex);
    }

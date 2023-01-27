@@ -46,19 +46,69 @@ export class Home extends PageBase {
          .click();
    }
 
-   public selectTab(tabName: string): void {
-      cy.contains('span', tabName, { matchCase: false })
-         .click();
+   public selectTab(...tabNames: string[]): void {
+      tabNames.forEach((tab) => {
+         cy.contains('span', tab, { matchCase: false })
+            .click()
+            .parent('a')
+            .should('have.class', 'uitk-tab-anchor-selected');
+         
+         cy.contains('form button', 'Search')
+            .should('be.visible');
+      })
+      
    }
 
    public verifyFlightDefaults(): void {
       cy.get('form')
-         .within(($form) => {
+         .within(() => {
+            // Roundtrip should be default selection
             cy.contains('span', 'Roundtrip')
                .parents('li')
-               .should('have.class', 'active')
+               .should('have.class', 'active');            
+
+            const defaultLabels = ['Leaving from', 'Going to', 'Departing', 'Returning'];
+            defaultLabels.forEach((label) => {
+               cy.contains('span', label)
+                  .parent()
+                  .should('be.visible')
+                  .then(($el) => {
+                     console.log(label);
+                     console.log($el.prev().prop('nodeName'));
+                     const elType = $el.prev().prop('nodeName');
+                     // if the parent element is a button make sure it has the label set as an attribute
+                     if (elType === 'button') {
+                        expect($el.attr('aria-label'), 'Button label attribute is set').to.contain(label);
+                     }
+                  });
+            });
          })
    }
 
+   public selectClass(prefferedClass: string): void {
+      cy.get('button#preferred-class-input-trigger')
+         .click()
+         .next()
+         .contains('span', prefferedClass, { matchCase: false })
+         .click();
 
+      cy.get('button#preferred-class-input-trigger')
+         .then(($btn) => {
+            expect($btn.text(), 'Verify preffered class').to.match(new RegExp(prefferedClass, 'i'));
+         })
+   }
+
+   public verifyOneWay(): void {
+      cy.contains('One-way')
+         .click();
+
+      cy.get('button#d2-btn')
+         .should('not.exist');
+
+      cy.contains('Roundtrip')
+         .click();
+
+      cy.get('button#d2-btn')
+         .should('be.visible')
+   }
 }

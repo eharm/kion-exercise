@@ -15,6 +15,24 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+/**
+ *    This code will hide all of the XHR requests which Cypress logs by default.
+ *    Toggle this option in the cypress.config.ts with the hideXHR setting.
+ */
+if (Cypress.env('hideXHR')) {
+   const app = window.top;
+
+   if (
+      app &&
+      !app.document.head.querySelector('[data-hide-command-log-request]')
+   ) {
+      const style = app.document.createElement('style');
+      style.innerHTML = '.command-name-request, .command-name-xhr { display: none }';
+      style.setAttribute('data-hide-command-log-request', '');
+
+      app.document.head.appendChild(style);
+   }
+}
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
