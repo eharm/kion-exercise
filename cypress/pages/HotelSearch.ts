@@ -3,13 +3,13 @@ import { PageBase } from "../support/page/PageBase";
 export class HotelSearch extends PageBase {
    public pageUrl = '/Hotel-Search?';
 
-   public addChildren(...children: number[]): void {
+   public addChildren(...childAges: number[]): void {
       cy.get('button[data-stid="open-room-picker"]')
          .click({ force: true });
 
       let queryString = 'adults=2&children='
 
-      children.forEach((childAge, i, arr) => {
+      childAges.forEach((childAge, i, arr) => {
          if (childAge > 17)
             throw new Error('A child must be under 18 years old');
 
